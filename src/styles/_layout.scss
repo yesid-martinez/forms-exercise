@@ -1,0 +1,20 @@
+@use './variables' as v;
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    background-image: v.$container-bg;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.initial-msg-container{
+    max-width: 65rem;
+    min-height: 75vh;
+    max-height: 90vh;
+    display: flex;
+    background-image: v.$initial-msg-bg;
+    box-shadow: v.$card-shadow;
+    border-radius: .8rem;
+}
