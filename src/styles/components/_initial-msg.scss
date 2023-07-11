@@ -7,8 +7,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    background-image: v.$secondary-bg;
     font-family: v.$main-font-family;
-    border-radius: .8rem;
+    border-top-left-radius: .8rem;
+    border-bottom-left-radius: .8rem;
     letter-spacing: 0.1rem;
 
     img {
@@ -31,7 +33,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;   
-    background-image: v.$initial-msg-secondary-bg;
+    background-image: v.$primary-bg;
     border-top-right-radius: .8rem;
     border-bottom-right-radius: .8rem;
 

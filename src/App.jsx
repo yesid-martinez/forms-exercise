@@ -1,10 +1,11 @@
-import InitialMessage from "./components/InitialMessage";
-
+// import InitialMessage from "./components/InitialMessage";
+import PersonalInfo from "./components/PersonalInfo"
 function App() {
 
   return (
     <div className="container">
-        <InitialMessage />
+        {/* <InitialMessage /> */}
+        <PersonalInfo />
     </div>
   )
 }

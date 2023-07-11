@@ -1,7 +1,7 @@
 // Backgrounds
 $container-bg: linear-gradient(to left top, #969a97, #a9aeab, #bdc2bf, #d1d7d4, #e5ece9);
-$initial-msg-bg: linear-gradient(to right top, #ca0db7, #d800ae, #e500a5, #f0009c, #f90093);
-$initial-msg-secondary-bg: linear-gradient(to bottom, #d6d1cd, #dad8d3, #dddfd9, #e1e5e1, #e5ece9);
+$primary-bg: linear-gradient(to bottom, #d6d1cd, #dad8d3, #dddfd9, #e1e5e1, #e5ece9);
+$secondary-bg: linear-gradient(to right top, #ca0db7, #d800ae, #e500a5, #f0009c, #f90093);
 $personal-info-bg: linear-gradient(to left top, #969a97, #a5a8a4, #b5b5b1, #c6c3be, #d6d1cd);
 
 // Fonts
@@ -9,8 +9,11 @@ $main-font-family: 'Cormorant Garamond', serif;
 
 // Fonts color
 $white: #fff;
+$black: #000000;
 $title-color: #C60F7B;
 
 // Shadows
 $card-shadow: 0 19px 38px rgba(0, 0, 0, 0.30),
+0 15px 12px rgba(0, 0, 0, 0.22);
+$button-shadow: 0 19px 38px rgba(0, 0, 0, 0.30),
 0 15px 12px rgba(0, 0, 0, 0.22);

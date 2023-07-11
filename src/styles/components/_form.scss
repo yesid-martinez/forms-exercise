@@ -1,0 +1,21 @@
+@use '../variables' as v;
+@use './button' as b;
+@use './inputs' as i;
+@use './error' as e;
+
+form{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    fieldset{
+        border: none;
+
+        @include e.error();
+    }
+
+    @include i.inputs();
+    @include b.button();
+}
+

@@ -1,0 +1,20 @@
+@use '../variables' as v;
+
+@mixin error(){
+    .error-container {
+        display: flex;
+        justify-content: end;
+
+        .error {
+            margin-top: .3rem;
+            text-align: end;
+            color: v.$white;
+        }
+
+        .error-icon {
+            color: v.$white;
+            margin: auto .2rem;
+        }
+
+    }
+}
