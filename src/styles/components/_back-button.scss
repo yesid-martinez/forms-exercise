@@ -1,0 +1,20 @@
+@use "../variables" as v;
+
+@mixin back-button() {
+    .back-btn {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        padding: .5rem .5rem;
+        background-image: v.$secondary-bg;
+        box-shadow: v.$button-shadow;
+        color: v.$white;
+        border: none;
+        border-radius: 9999px;
+        cursor: pointer;
+        top: 1.5rem;
+        left: 2.5rem;
+    }
+}

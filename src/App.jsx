@@ -1,11 +1,13 @@
 // import InitialMessage from "./components/InitialMessage";
-import PersonalInfo from "./components/PersonalInfo"
+// import PersonalInfo from "./components/PersonalInfo"
+import ContactInfo from "./components/ContactInfo"
 function App() {
 
   return (
     <div className="container">
         {/* <InitialMessage /> */}
-        <PersonalInfo />
+        {/* <PersonalInfo /> */}
+        <ContactInfo />
     </div>
   )
 }
