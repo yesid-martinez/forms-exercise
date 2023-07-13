@@ -53,4 +53,19 @@
     right: 2.8rem;
     margin-top: .7rem;
     font-size: 1.2rem;
-}    
+}
+
+.selection-container {
+    display: flex;
+    justify-content: space-around;
+    color: v.$white;
+    margin: .5rem 0;
+
+    label {
+        font-size: 1.4rem;
+    }
+
+    & input[type="radio"] {
+        margin-left: .3rem;
+    }
+}
