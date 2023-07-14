@@ -1,13 +1,31 @@
 import { IoIosArrowDown } from "react-icons/io";
 import { BiSolidErrorCircle } from "react-icons/bi";
 
+import { useContext } from "react";
+import NavigationState from "../context/NavigationState";
+
+import { useLocalStorage } from "../hooks/useLocalStorage";
+
 const PersonalInfo = () => {
+
+    const [fName, setFName] = useLocalStorage("fName", "");
+    const [lName, setLName] = useLocalStorage("lName", "");
+    const [age, setAge] = useLocalStorage("age", "");
+    const [genre, setGenre] = useLocalStorage("genre", "");
+    
+    const { setStep } = useContext(NavigationState);
+    
+    const onSubmit = (e) => {
+        e.preventDefault();
+        setStep("contactinfo");
+    };
+
     return (
     <main>
         <div className="card">
         <img src="../../public/fdc-logo.webp" alt="Flores de Colores" />
         <h3>Información personal</h3>
-        <form autoComplete="off">
+        <form autoComplete="off" onSubmit={onSubmit}>
             <fieldset>
             <input
                 type="text"
@@ -15,6 +33,8 @@ const PersonalInfo = () => {
                 id="fName"
                 autoFocus
                 placeholder="Nombre"
+                value={fName}
+                onChange={(e) => setFName(e.target.value)}
             />
             <div className="error-container">
                 <p className="error">Nombre requerido</p>
@@ -28,6 +48,8 @@ const PersonalInfo = () => {
                 id="lName"
                 autoComplete="off"
                 placeholder="Apellido"
+                value={lName}
+                onChange={(e) => setLName(e.target.value)}
             />
             <div className="error-container">
                 <p className="error">Apellido requerido</p>
@@ -42,6 +64,8 @@ const PersonalInfo = () => {
                 required
                 id="age"
                 placeholder="Edad"
+                value={age}
+                onChange={(e) => setAge(e.target.value)}
             />
             <div className="error-container">
                 <p className="error">Edad requerida</p>
@@ -52,10 +76,10 @@ const PersonalInfo = () => {
             <div className="select-icon">
                 <IoIosArrowDown />
             </div>
-            <select id="genre">
+            <select id="genre" value={genre} onChange={(e) => setGenre(e.target.value)}>
                 <option value="">Género</option>
-                <option value="male">Femenino</option>
-                <option value="female">Masculino</option>
+                <option value="female">Femenino</option>
+                <option value="male">Masculino</option>
                 <option value="another">Otro</option>
             </select>
             <p className="optional">(Opcional)</p>

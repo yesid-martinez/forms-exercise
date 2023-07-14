@@ -1,16 +1,33 @@
 import { BiSolidErrorCircle } from "react-icons/bi";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 
+import { useContext } from "react";
+import NavigationState from "../context/NavigationState";
+
+import { useLocalStorage } from "../hooks/useLocalStorage";
+
 const ContactInfo = () => {
+    
+    const { setStep } = useContext(NavigationState);
+
+    const [email, setEmail] = useLocalStorage("email", "");
+    const [phoneNum, setPhoneNum] = useLocalStorage("phoneNum", "");
+    const [address, setAddress] = useLocalStorage("address", "");
+    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setStep("tallerdetails");
+    };
+
     return (
     <main>
         <div className="card">
-        <button className="back-btn">
+        <button className="back-btn" onClick={() => setStep("personalinfo")}>
             <MdOutlineKeyboardBackspace />
         </button>
         <img src="../../public/fdc-logo.webp" alt="Flores de Colores" />
         <h3>Información de contacto</h3>
-        <form action="" autoComplete="off">
+        <form action="" autoComplete="off" onSubmit={handleSubmit}>
             <fieldset>
                 <input
                     type="email"
@@ -19,6 +36,8 @@ const ContactInfo = () => {
                     autoFocus
                     autoComplete="off"
                     placeholder="Correo electrónico"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                 />
                 <div className="error-container">
                     <p className="error">Correo válido requerido</p>
@@ -33,6 +52,8 @@ const ContactInfo = () => {
                     required
                     id="phoneNum"
                     placeholder="Número de télefono"
+                    value={phoneNum}
+                    onChange={(e) => setPhoneNum(e.target.value)}
                 />
                 <div className="error-container">
                     <p className="error">Número de teléfono requerido</p>
@@ -45,6 +66,8 @@ const ContactInfo = () => {
                     id="address"
                     autoComplete="off"
                     placeholder="Dirección residencial"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
                 />
                 <p className="optional">(Opcional)</p>
             </fieldset>
