@@ -1,22 +1,24 @@
-import { BiSolidErrorCircle } from "react-icons/bi";
 import { MdOutlineKeyboardBackspace } from "react-icons/md";
 
 import { useContext } from "react";
 import NavigationState from "../context/NavigationState";
 
-import { useLocalStorage } from "../hooks/useLocalStorage";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { ContactInfoSchema } from "../schemas/ContactInfoSchema";
+
 
 const ContactInfo = () => {
     
     const { setStep } = useContext(NavigationState);
 
-    const [email, setEmail] = useLocalStorage("email", "");
-    const [phoneNum, setPhoneNum] = useLocalStorage("phoneNum", "");
-    const [address, setAddress] = useLocalStorage("address", "");
-    
-    const handleSubmit = (e) => {
-        e.preventDefault();
+    const handleSubmit = () => {
         setStep("tallerdetails");
+    };
+
+    const initialValues = {
+        email: "",
+        phoneNum: "",
+        address: "",
     };
 
     return (
@@ -27,52 +29,49 @@ const ContactInfo = () => {
         </button>
         <img src="../../public/fdc-logo.webp" alt="Flores de Colores" />
         <h3>Información de contacto</h3>
-        <form action="" autoComplete="off" onSubmit={handleSubmit}>
-            <fieldset>
-                <input
-                    type="email"
-                    required
-                    id="email"
-                    autoFocus
-                    autoComplete="off"
-                    placeholder="Correo electrónico"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-                <div className="error-container">
-                    <p className="error">Correo válido requerido</p>
-                    <BiSolidErrorCircle className="error-icon" />
-                </div>
-            </fieldset>
-            <fieldset>
-                <input
-                    type="text"
-                    pattern="[0-9]+"
-                    inputMode="text"
-                    required
-                    id="phoneNum"
-                    placeholder="Número de télefono"
-                    value={phoneNum}
-                    onChange={(e) => setPhoneNum(e.target.value)}
-                />
-                <div className="error-container">
-                    <p className="error">Número de teléfono requerido</p>
-                    <BiSolidErrorCircle className="error-icon" />
-                </div>
-            </fieldset>
-            <fieldset>
-                <input
-                    type="text"
-                    id="address"
-                    autoComplete="off"
-                    placeholder="Dirección residencial"
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                />
-                <p className="optional">(Opcional)</p>
-            </fieldset>
-            <button type="submit">Siguiente</button>
-        </form>
+        <Formik
+            initialValues={initialValues}
+            validationSchema={ContactInfoSchema}
+            onSubmit={handleSubmit}
+        >
+            <Form autoComplete="off" noValidate>
+                <fieldset>
+                    <Field
+                        type="email"
+                        required
+                        id="email"
+                        autoFocus
+                        placeholder="Correo electrónico"
+                        name="email"
+                    />
+                    <div className="error-container">
+                        <ErrorMessage name="email" component="p" className="error" />
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <Field
+                        type="text"
+                        required
+                        id="phoneNum"
+                        placeholder="Número de télefono"
+                        name="phoneNum"
+                    />
+                    <div className="error-container">
+                        <ErrorMessage name="phoneNum" component="p" className="error" />
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <Field
+                        type="text"
+                        id="address"
+                        placeholder="Dirección residencial"
+                        name="address"
+                    />
+                    <p className="optional">(Opcional)</p>
+                </fieldset>
+                <button type="submit">Siguiente</button>
+            </Form>
+        </Formik>
         </div>
     </main>
     );

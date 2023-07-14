@@ -3,13 +3,12 @@ import PersonalInfo from "./components/PersonalInfo"
 import ContactInfo  from "./components/ContactInfo"
 import TallerDetails from "./components/TallerDetails"
 import ParticipationDetails from "./components/ParticipationDetails"
+import ConfirmData from "./components/ConfirmData";
 
 import { useState } from "react"
-
 import NavigationState from "./context/NavigationState"
 
 function App() {
-
   const [step, setStep] = useState('initialmessage');
 
   return (
@@ -20,6 +19,7 @@ function App() {
         {step === 'contactinfo' && <ContactInfo />}
         {step === 'tallerdetails' && <TallerDetails />}
         {step === 'participationdetails' && <ParticipationDetails />}
+        {step === 'confirmdata' && <ConfirmData />}
       </div>
     </NavigationState.Provider>
   )
