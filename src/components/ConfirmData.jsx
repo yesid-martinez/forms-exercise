@@ -1,45 +1,96 @@
-import { ErrorMessage } from 'formik';
-import { IoCloseCircleOutline } from "react-icons/io5";
 import { BsClipboard2Check } from "react-icons/bs"; 
+import {BsPatchCheckFill} from "react-icons/bs";
+import { IoCloseCircleOutline } from "react-icons/io5";
 
 import { useContext } from "react";
 import NavigationState from "../context/NavigationState";
 
-import { Formik, Form, Field } from "formik";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import {ConfirmDataSchema} from "../schemas/ConfirmDataSchema";
+
+import { useSelector, useDispatch } from "react-redux";
+import { 
+    updatePersonalInfo,
+    updateContactInfo,
+    updateTallerDetails,
+    updateParticipationDetails,
+} from "../features/forms/formsSlice";
 
 const ConfirmData = () => {
     const { setStep } = useContext(NavigationState);
+    const dispatch = useDispatch();
 
-    const handleSubmit = () => {
-        console.log("Formulario enviado exitosamente...");
+    const personalInfo = useSelector((state) => state.data.formsData.personalInfo);
+    const contactInfo = useSelector((state) => state.data.formsData.contactInfo);
+    const tallerDetails = useSelector((state) => state.data.formsData.tallerDetails);
+    const participationDetails = useSelector((state) => state.data.formsData.participationDetails);
+    const data = useSelector((state) => state.data.formsData);
+
+    
+    const handleSubmit = (values) => {
+        const formsData = {
+            personalInfoValues: {
+                fName: values.fName,
+                lName: values.lName,
+                age: values.age,
+                gender: personalInfo.gender,
+            },
+            contactInfoValues: {
+                email: values.email,
+                phoneNum: values.phoneNum,
+                address: personalInfo.address,
+            },
+            tallerDetailsValues: {
+                taller: values.taller,
+                mode: values.mode,
+                hour: values.hour,
+            },
+            participationDetailsValues: {
+                selectExperience: personalInfo.selectExperience,
+                experience: values.experience,
+                preferences: personalInfo.preferences,
+                expected: personalInfo.expected,
+            },
+        };
+        
+        dispatch(updatePersonalInfo(formsData.personalInfoValues));
+        dispatch(updateContactInfo(formsData.contactInfoValues));
+        dispatch(updateTallerDetails(formsData.tallerDetailsValues));
+        dispatch(updateParticipationDetails(formsData.participationDetailsValues));
+        
+        // `data`: Datos finales que se enviarán al servidor
+        console.log(data);
+        // No se muestran instantaneamente los cambios (En caso de modificar los valores previos) 
+        // debido a que las actualizaciones del estado en  Redux Toolkit pueden ser asincrónicas.
+
+        setStep("confirmeddata")
     };
-
+    
     const initialValues = {
-        fName: "",
-        lName: "",
-        age: "",
-        email: "",
-        phoneNum: "",
-        experience: "",
-        taller: "",
-        mode: "",
-        hour: "",
-    };
+        fName: personalInfo.fName,
+        lName: personalInfo.lName,
+        age: personalInfo.age,
+        email: contactInfo.email,
+        phoneNum: contactInfo.phoneNum,
+        experience: participationDetails.experience,
+        taller: tallerDetails.taller,
+        mode: tallerDetails.mode,
+        hour: tallerDetails.hour,
+    }
 
     return (
         <div className="cards-container">
             <Formik
                 initialValues={initialValues}
-                onSubmit={handleSubmit}
                 validationSchema={ConfirmDataSchema}
+                onSubmit={handleSubmit}
             >
-                <Form autoComplete="off" noValidate >
-                    <h2>Confirmación de datos <BsClipboard2Check className="confirm-icon"/></h2>
+                <Form autoComplete="off" noValidate>
                     <div className="close-container">
                         <IoCloseCircleOutline className="close-icon" onClick={() => setStep("participationdetails")}/>
                     </div>
-                    <p>Por favor confirme los datos ingresados...</p>
+                    <h2>Confirmación de datos <BsClipboard2Check/></h2>
+                    <p><BsPatchCheckFill className="confirm-icon"/> Por favor confirme los datos ingresados, es posible modificarlos en caso de ser necesario.</p>
                     <h3>Información personal</h3>
                     <fieldset>
                         <h4>Nombre</h4>

@@ -1,3 +1,4 @@
+import fdcLogo from "../assets/fdc-logo.png";
 import { IoIosArrowDown } from "react-icons/io";
 
 import { useContext } from "react";
@@ -6,29 +7,32 @@ import NavigationState from "../context/NavigationState";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { PersonalInfoSchema } from "../schemas/PersonalInfoSchema";
 
+import { useSelector, useDispatch } from 'react-redux';
+import { updatePersonalInfo } from "../features/forms/formsSlice";
+
 const PersonalInfo = () => {
     const { setStep } = useContext(NavigationState);
 
-    const handleSubmit = () => {
-        setStep("contactinfo");
-    };
+    const personalInfo = useSelector(state => state.data.formsData.personalInfo);
+    const dispatch = useDispatch();
 
-    const initialValues = {
-        fName: "",
-        lName: "",
-        age: "",
-        genre: "",
+    const handleSubmit = (values, { setSubmitting }) => {
+        // Evitar el envío predeterminado del formulario
+        setSubmitting(false);
+
+        dispatch(updatePersonalInfo(values));
+        setStep("contactinfo");
     };
 
     return (
         <main>
             <div className="card">
-                <img src="../../public/fdc-logo.webp" alt="Flores de Colores" />
+                <img src={fdcLogo} alt="Flores de colores"/>
                 <h3>Información personal</h3>
                 <Formik
-                    initialValues={initialValues}
+                    initialValues={personalInfo}
                     validationSchema={PersonalInfoSchema}
-                    onSubmit={handleSubmit}
+                    onSubmit={(values, { setSubmitting }) => handleSubmit(values, { setSubmitting })}
                 >
                     <Form autoComplete="off" noValidate>
                         <fieldset>
@@ -73,8 +77,8 @@ const PersonalInfo = () => {
                                 <IoIosArrowDown />
                             </div>
                             <Field as="select"
-                                id="genre"
-                                name="genre"
+                                id="gender"
+                                name="gender"
                             >
                                 <option value="">Género</option>
                                 <option value="female">Femenino</option>

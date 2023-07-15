@@ -1,5 +1,6 @@
 @use '../variables' as v;
 @use './back-button' as b;
+
 .card{
     background-image: v.$secondary-bg;
     box-shadow: v.$card-shadow;

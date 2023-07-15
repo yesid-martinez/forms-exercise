@@ -1,3 +1,5 @@
+import fdcLogo from "../assets/fdc-logo.png";
+
 import { useContext } from "react";
 import NavigationState from "../context/NavigationState";
 
@@ -8,7 +10,7 @@ const InitialMessage = () => {
     return (
         <div className="initial-msg-container">
             <div>
-                <img src="../public/fdc-logo.webp" alt="Flores de Colores" />
+                <img src={fdcLogo} alt="Flores de colores"/>
                 <h1>Flores de Colores</h1>
             </div>
             <div>

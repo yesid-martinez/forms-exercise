@@ -1,5 +1,7 @@
-import { MdOutlineKeyboardBackspace } from "react-icons/md";
+import fdcLogo from "../assets/fdc-logo.png";
+
 import { IoIosArrowDown } from "react-icons/io";
+import { MdOutlineKeyboardBackspace } from "react-icons/md";
 
 import { useContext } from "react";
 import NavigationState from "../context/NavigationState";
@@ -7,29 +9,34 @@ import NavigationState from "../context/NavigationState";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import {TallerDetailsSchema} from "../schemas/TallerDetailsSchema";
 
+import { useSelector, useDispatch } from 'react-redux';
+import { updateTallerDetails } from "../features/forms/formsSlice"; 
+
 const TallerDetails = () => {
     const { setStep } = useContext(NavigationState);
 
-    const handleSubmit = () => {
+    const tallerDetails = useSelector((state) => state.data.formsData.tallerDetails);
+    const dispatch = useDispatch();
+
+    const handleSubmit = (values, { setSubmitting }) => {
+        setSubmitting(false);
+
+        dispatch(updateTallerDetails(values));
         setStep("participationdetails");
     };
 
-    const initialValues = {
-        taller: "",
-        mode: "",
-        hour: "",
-    };
-    
     return (
         <main>
             <div className="card">
-                <button className="back-btn" onClick={() => setStep("contactinfo")}><MdOutlineKeyboardBackspace/></button>
-                <img src="../../public/fdc-logo.webp" alt="Flores de Colores" />
+                <button className="back-btn" onClick={() => setStep("contactinfo")}>
+                    <MdOutlineKeyboardBackspace />
+                </button>
+                <img src={fdcLogo} alt="Flores de colores"/>
                 <h3>Detalles del taller</h3>
                 <Formik
-                    initialValues={initialValues}
-                    onSubmit={handleSubmit}
+                    initialValues={tallerDetails}
                     validationSchema={TallerDetailsSchema}
+                    onSubmit={(values, { setSubmitting }) => handleSubmit(values, { setSubmitting })}
                 >
                     <Form autoComplete="off" noValidate>
                         <fieldset>

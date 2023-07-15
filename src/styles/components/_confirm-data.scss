@@ -12,40 +12,49 @@
     position: relative;
 
     form{
-        width: 90%;
+        width: 98%;
         display: grid;
         grid-template-columns: repeat(3, auto);
         grid-template-rows: repeat(9, auto);
         gap: 1.5rem;
         
         h2{
-            grid-column: 2;
-            font-size: 2.2rem;
+            grid-column: 1 / span 3;
+            font-size: 2.3rem;
             margin-top: 1.5rem;
             display: flex;
             align-items: center;
+            justify-content: center;
             color: v.$white;
         }
-
+        
         
         h3{
             grid-column: 1 / span 3;
             text-align: center;
             color: v.$white;
-            font-size: 1.7rem;
+            font-size: 1.9rem;
         }
 
         
         p{
             grid-column: 1 / span 3;
+            margin-left: 2rem;
             color: v.$black;
-            font-size: 1.3rem;
-            text-align: center;
+            font-size: 1.6rem;
             font-weight: 600;
+            display: flex;
+            align-items: center;
         }
         
         input{
             border: 1px solid v.$white;
+        }
+
+        .confirm-icon{
+            font-size: 1.3rem;
+            color: white;
+            margin-right: .5rem
         }
 
         .confirm-btn-container{
@@ -54,17 +63,17 @@
             place-items: center;
             
         }
-        
-        .close-container {
-            position: absolute;
-            top: .5rem;
-            right: .8rem;
-    
-            .close-icon {
-                color: v.$white;
-                font-size: 2rem;
-                cursor: pointer;
-            }
+    }
+
+    .close-container {
+        position: absolute;
+        top: .5rem;
+        right: .8rem;
+
+        .close-icon {
+            color: v.$white;
+            font-size: 2rem;
+            cursor: pointer;
         }
     }
 

@@ -56,6 +56,13 @@
     font-size: 1.2rem;
 }
 
+.select-disabled {
+    pointer-events: none;
+    touch-action: none;
+    appearance: none;
+    cursor: not-allowed;
+}
+
 .selection-container {
     display: flex;
     justify-content: space-around;
