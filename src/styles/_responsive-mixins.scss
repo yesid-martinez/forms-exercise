@@ -1,0 +1,18 @@
+@mixin responsive-min-max($min-width, $max-width) {
+    @media (min-width: $min-width) and (max-width: $max-width) {
+        @content; // Esto incluirá el contenido dentro del media query
+    }
+}
+
+@mixin responsive-min($min-width) {
+    @media (min-width: $min-width) {
+        @content; // Esto incluirá el contenido dentro del media query
+    }
+}
+
+
+// @media (320px <= width < 480px ){
+//     *{
+//         background-color: red;
+//     }
+// }

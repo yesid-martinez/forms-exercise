@@ -1,0 +1,236 @@
+@use '../../../styles/responsive-mixins' as rm;
+
+.initial-msg {
+    @media (min-width: 320px) and (min-height: 568px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 1rem;
+
+        div {
+            text-align: center;
+            }
+        
+        h2{
+            padding: 0 1.8rem;
+        }
+        
+        img{
+            max-width: 60%;
+        }
+
+        p {
+            font-size: 1.1rem;
+            padding: 0 1.8rem;
+        }
+    }
+
+    @media (min-width: 568px) and (min-height: 320px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 1rem;
+
+        div {
+            text-align: center;
+        }
+
+        h2 {
+            padding: 0 1.8rem;
+        }
+
+        img {
+            max-width: 60%;
+        }
+
+        p {
+            font-size: 1.1rem;
+            padding: 0 1.8rem;
+        }
+    }
+
+    @media (min-width: 414px) and (min-height: 896px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        h1 {
+            margin-top: 4rem;
+        }
+
+        img {
+            max-width: 60%;
+        }
+
+        p {
+            font-size: 1.1rem;
+            padding: 0 1.8rem;
+        }
+
+        button {
+            margin-top: 3rem;
+        }
+    }
+
+    @media (min-width: 768px) and (min-height: 1024px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        div {
+            height: 100%;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1{
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            padding: 0 1.8rem;
+        }
+
+        img {
+            max-width: 60%;
+        }
+
+        p {
+            font-size: 1.3rem;
+            padding: 0 1.8rem;
+        }
+
+        button{
+            font-size: 1.5rem;
+            padding: 1.1rem 1.8rem;
+        }
+    }
+
+    @media (min-width: 1024px) and (min-height: 768px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        div {
+            height: 100%;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            padding: 0 1.8rem;
+        }
+
+        img {
+            max-width: 40%;
+        }
+
+        p {
+            font-size: 1.3rem;
+            padding: 0 1.8rem;
+        }
+
+        button {
+            font-size: 1.5rem;
+            padding: 1.1rem 1.8rem;
+        }
+    }
+
+    @media (min-width: 1024px) and (min-height: 1366px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        div {
+            height: 100%;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            padding: 0 1.8rem;
+        }
+
+        img {
+            max-width: 50%;
+        }
+
+        p {
+            font-size: 1.5rem;
+            padding: 0 1.8rem;
+        }
+
+        button {
+            font-size: 1.8rem;
+            padding: 1.4rem 2.1rem;
+        }
+    }
+    
+    @media (min-width: 720px) and (min-height: 1280px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+
+        div {
+            height: 100%;
+            width: 100%;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            padding: 0 1.8rem;
+        }
+
+        img {
+            max-width: 60%;
+        }
+
+        p {
+            font-size: 1.5rem;
+            padding: 0 1.8rem;
+        }
+
+        button {
+            font-size: 1.8rem;
+            padding: 1.4rem 2.1rem;
+        }
+    }
+
+    @media (min-width: 1025px){
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr;
+        div:nth-of-type(2){
+            grid-column: 2;
+            margin-top: 50%;
+        }
+
+        div:nth-of-type(3){
+            grid-column: 2;
+            margin-bottom: 50%;
+        }
+    }
+}

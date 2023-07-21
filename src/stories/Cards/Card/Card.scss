@@ -1,0 +1,18 @@
+@use '../../../styles/responsive-mixins' as rm;
+@use '../../../styles/variables' as v;
+
+.card{
+    border-radius: .5rem;
+
+    @media (min-width: 320px) and (min-height: 568px) {
+        max-width: 85vw;
+        min-height: 90vh;
+        margin: 2rem 0;
+    }
+
+    @media (min-width: 568px) and (min-height: 320px) {
+        max-width: 85vw;
+        min-height: 90vh;
+        margin: 2rem 0;
+    }
+}

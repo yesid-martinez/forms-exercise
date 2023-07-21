@@ -1,4 +1,25 @@
-@use './reset.scss';
-@use './fonts';
-@use './layout';
-@use './components.scss';
+@use '../styles/responsive-mixins' as rm;
+@use './fonts' as f;
+
+.container{
+    font-family: 'Montserrat', sans-serif;
+    min-width: 320px;
+    min-height: 100vh;
+    background-color: #800080;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    h1, h2, h3{
+        color: #800080;
+        font-style: italic;
+    }
+
+    h1{
+        font-weight: 700;
+    }
+
+    h2{
+        font-weight: 600;
+    }
+}
